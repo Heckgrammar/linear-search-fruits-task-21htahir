@@ -9,11 +9,11 @@
             Console.Write("Enter a fruit to search for: ");
             string searchTerm = Console.ReadLine()?.ToLower();
 
-            bool isFound = LinearSearch(fruits, searchTerm);
+            int position = LinearSearch(fruits, searchTerm);
 
-            if (isFound)
+            if (position != -1)
             {
-                Console.WriteLine("True");
+                Console.WriteLine($"True, found at index {position}");
             }
             else
             {
@@ -21,16 +21,16 @@
             }
         }
 
-        static bool LinearSearch(string[] fruitsArray, string searchTerm)
+        static int LinearSearch(string[] fruitsArray, string searchTerm)
         {
             for (int i = 0; i < fruitsArray.Length; i++)
             {
                 if (fruitsArray[i].ToLower() == searchTerm)
                 {
-                    return true;
+                    return i;
                 }
             }
-            return false;
+            return -1;
         }
     }
 }
